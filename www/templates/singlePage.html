@@ -1,4 +1,11 @@
-<ion-side-menus enable-menu-with-back-views="false">
+<ion-side-menus enable-menu-with-back-views="false" ng-controller="AppCtrl">
+  <ion-nav-bar class="bar-balanced">
+    <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear">
+        Skip
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
   <ion-side-menu-content>
     <ion-nav-view name="singlePage"></ion-nav-view>
   </ion-side-menu-content>
