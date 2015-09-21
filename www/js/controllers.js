@@ -75,8 +75,16 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('LoginPageCtrl', function($scope, $stateParams) {
-  
+.controller('LoginPageCtrl', function($scope, $stateParams) {  
+})
+
+.controller('HomeCtrl', function($scope, $stateParams, $state) {
+  $scope.input = function() {
+    $state.go("app.input");
+  };
+})
+
+.controller('InputCtrl', function($scope, $stateParams) {  
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

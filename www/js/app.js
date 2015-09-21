@@ -52,7 +52,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/home',
     views: {
       'menuContent': {
-        templateUrl: 'templates/home.html'
+        templateUrl: 'templates/home.html',
+        controller: 'HomeCtrl'
+      }
+    }
+  })
+
+  .state('app.input', {
+    url: '/input',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/input.html'
       }
     }
   })
