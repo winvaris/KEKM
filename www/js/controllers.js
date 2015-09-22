@@ -75,16 +75,29 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('LoginPageCtrl', function($scope, $stateParams) {  
+.controller('LoginPageCtrl', function($scope, $stateParams) {
 })
 
 .controller('HomeCtrl', function($scope, $stateParams, $state) {
   $scope.input = function() {
     $state.go("app.input");
   };
+  $scope.aroundMe = function() {
+    $state.go("app.aroundMe");
+  };
 })
 
-.controller('InputCtrl', function($scope, $stateParams) {  
+.controller('InputCtrl', function($scope, $stateParams, $state) {
+  console.log("resultLocation");
+  $scope.result = function() {
+    $state.go("app.resultLocation");
+  };
+})
+
+.controller('ResultLocationCtrl', function($scope, $stateParams) {
+})
+
+.controller('AroundMeCtrl', function($scope, $stateParams) {
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

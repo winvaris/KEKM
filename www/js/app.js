@@ -62,7 +62,28 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/input',
     views: {
       'menuContent': {
-        templateUrl: 'templates/input.html'
+        templateUrl: 'templates/input.html',
+        controller: 'InputCtrl'
+      }
+    }
+  })
+
+  .state('app.resultLocation', {
+    url: '/resultLocation',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/resultLocation.html',
+        controller: 'ResultLocationCtrl'
+      }
+    }
+  })
+
+  .state('app.aroundMe', {
+    url: '/aroundMe',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/aroundMe.html',
+        controller: 'AroundMeCtrl'
       }
     }
   })

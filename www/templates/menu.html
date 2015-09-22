@@ -10,7 +10,7 @@
         </button>
       </ion-nav-buttons>
       <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-search">
+        <button class="button button-icon button-clear ion-search" ng-click="login()">
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
@@ -18,10 +18,15 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
-    </ion-header-bar>
     <ion-content>
+      <center>
+        <div style="padding-top: 15%;">
+          <img src="/img/ionic.png" style="width: 50%; height: 50%" class="img-circle">
+        </div>
+        <h1>Profile</h1>
+        <h5 style="color:grey; padding-bottom: 5%; padding-left: 10%; padding-right: 10%">Lorem ipsum dolor sit amet, consectetur adipiscling elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus ac blandit</h5>
+        <h2>Menu</h2>
+      </center>
       <ion-list>
         <ion-item menu-close href="#/app/home">
           Home
@@ -60,14 +65,3 @@
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
-<div class="tabs tabs-icon-only">
-  <a class="tab-item">
-    <i class="icon ion-home" ng-click="login()"></i>
-  </a>
-  <a class="tab-item">
-    <i class="icon ion-star" ng-click="starTest()"></i>
-  </a>
-  <a class="tab-item">
-    <i class="icon ion-gear-a"></i>
-  </a>
-</div>
