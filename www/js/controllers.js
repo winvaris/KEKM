@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -10,33 +10,37 @@ angular.module('starter.controllers', [])
   //});
 
   // Form data for the login modal
-  $scope.loginData = {};
+  $scope.searchData = {};
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+  $ionicModal.fromTemplateUrl('templates/search.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
   });
 
+  $scope.result = function() {
+    $state.go("app.resultLocation");
+  };
+
   // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
+  $scope.closeSearch = function() {
     $scope.modal.hide();
   };
 
   // Open the login modal
-  $scope.login = function() {
+  $scope.search = function() {
     $scope.modal.show();
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+  $scope.doSearch = function() {
+    console.log('Doing login', $scope.searchData);
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
     $timeout(function() {
-      $scope.closeLogin();
+      $scope.closeSearch();
     }, 1000);
   };
 
@@ -59,23 +63,78 @@ angular.module('starter.controllers', [])
     { title: 'Dubstep', id: 9 },
     { title: 'Indie', id: 10 },
     { title: 'Rap', id: 11 },
-    { title: 'Cowbell', id: 12 },
-    { title: 'Reggae', id: 13 },
-    { title: 'Chill', id: 14 },
-    { title: 'Dubstep', id: 15 },
-    { title: 'Indie', id: 16 },
-    { title: 'Rap', id: 17 },
-    { title: 'Cowbell', id: 18 },
-    { title: 'Reggae', id: 19 },
-    { title: 'Chill', id: 20 },
-    { title: 'Dubstep', id: 21 },
-    { title: 'Indie', id: 22 },
-    { title: 'Rap', id: 23 },
-    { title: 'Cowbell', id: 24 }
+    { title: 'Cowbell', id: 12 }
   ];
 })
 
-.controller('LoginPageCtrl', function($scope, $stateParams) {
+.controller('LoginCtrl', function($scope, $stateParams, $state, $ionicModal) {
+  $scope.signinData = {};
+
+  // Create the login modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/signin.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  // Triggered in the login modal to close it
+  $scope.closeSignin = function() {
+    $scope.modal.hide();
+  };
+
+  // Open the login modal
+  $scope.signin = function() {
+    $scope.modal.show();
+  };
+
+  // Perform the login action when the user submits the login form
+  $scope.doSignin = function() {
+    console.log('Doing login', $scope.signinData);
+
+    // Simulate a login delay. Remove this and replace with your login
+    // code if using a login system
+    $timeout(function() {
+      $scope.closeSignin();
+    }, 1000);
+  };
+
+  //===============================Signup=====================================
+
+  $scope.signupData = {};
+
+  // Create the login modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/signup.html', {
+    scope: $scope
+  }).then(function(modal2) {
+    $scope.modal2 = modal2;
+  });
+
+  // Triggered in the login modal to close it
+  $scope.closeSignup = function() {
+    $scope.modal2.hide();
+  };
+
+  // Open the login modal
+  $scope.signup = function() {
+    $scope.modal2.show();
+  };
+
+  // Perform the login action when the user submits the login form
+  $scope.doSignup = function() {
+
+    // Simulate a login delay. Remove this and replace with your login
+    // code if using a login system
+    $timeout(function() {
+      $scope.closeSignup();
+    }, 1000);
+  };
+
+  $ionicModal.fromTemplateUrl('templates/test.html', {
+    scope: $scope
+  }).then(function(modal3) {
+    $scope.modal3 = modal3;
+  });
+
 })
 
 .controller('HomeCtrl', function($scope, $stateParams, $state) {
@@ -94,10 +153,13 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ResultLocationCtrl', function($scope, $stateParams) {
+.controller('ResultLocationCtrl', function($scope, $stateParams, $state) {
 })
 
-.controller('AroundMeCtrl', function($scope, $stateParams) {
+.controller('AroundMeCtrl', function($scope, $stateParams, $state) {
+})
+
+.controller('SigninCtrl', function($scope, $stateParams, $state) {
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

@@ -35,8 +35,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: "/login",
     views: {
       'singlePage': {
-        templateUrl: "templates/loginPage.html",
-        controller: 'LoginPageCtrl'
+        templateUrl: "templates/login.html",
+        controller: 'LoginCtrl'
+      }
+    }
+  })
+
+  .state('login.signin', {
+    url: '/signin',
+    views: {
+      'singlePage': {
+        templateUrl: 'templates/signin.html',
+        controller: 'SigninCtrl'
       }
     }
   })
