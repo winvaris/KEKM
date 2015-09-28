@@ -35,8 +35,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: "/login",
     views: {
       'singlePage': {
-        templateUrl: "templates/loginPage.html",
-        controller: 'LoginPageCtrl'
+        templateUrl: "templates/login.html",
+        controller: 'LoginCtrl'
+      }
+    }
+  })
+
+  .state('login.signin', {
+    url: '/signin',
+    views: {
+      'singlePage': {
+        templateUrl: 'templates/signin.html',
+        controller: 'SigninCtrl'
       }
     }
   })
@@ -52,7 +62,38 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/home',
     views: {
       'menuContent': {
-        templateUrl: 'templates/home.html'
+        templateUrl: 'templates/home.html',
+        controller: 'HomeCtrl'
+      }
+    }
+  })
+
+  .state('app.input', {
+    url: '/input',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/input.html',
+        controller: 'InputCtrl'
+      }
+    }
+  })
+
+  .state('app.resultLocation', {
+    url: '/resultLocation',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/resultLocation.html',
+        controller: 'ResultLocationCtrl'
+      }
+    }
+  })
+
+  .state('app.aroundMe', {
+    url: '/aroundMe',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/aroundMe.html',
+        controller: 'AroundMeCtrl'
       }
     }
   })
