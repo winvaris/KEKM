@@ -1,0 +1,13 @@
+<ion-view view-title="Interest">
+  <ion-content>
+    <center>
+      <div align="center" style="padding-top: 4%; padding-left: 5%;
+    	padding-right: 5%;">
+        <h1>Select Your Interest</h1>
+        <button class="button button-block button-stable" ng-repeat="int in interests" ng-click="goToSeason(int)">
+          {{int}}
+        </button>
+      </div>
+    </center>
+  </ion-content>
+</ion-view>

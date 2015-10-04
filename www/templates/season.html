@@ -1,0 +1,13 @@
+<ion-view view-title="Date">
+  <ion-content>
+    <center>
+      <div style="padding-top: 4%; padding-left: 5%; padding-right: 5%;">
+        <h1> Select Date </h1>
+        <ionic-datepicker input-obj="datepickerObject">
+          <button class="button button-block button-positive"> {{selectedDate | date:'dd - MMMM - yyyy'}}</button>
+        </ionic-datepicker>
+        <button class="button button-block button-stable" ng-click="goToCat()">Enter</button>
+      </div>
+    </center>
+  </ion-content>
+</ion-view>

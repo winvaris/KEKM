@@ -63,69 +63,41 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.input', {
-    url: '/input',
+  .state('app.interest', {
+    url: '/interest',
     views: {
       'menuContent': {
-        templateUrl: 'templates/input.html',
-        controller: 'InputCtrl'
+        templateUrl: 'templates/interest.html',
+        controller: 'interestCtrl'
       }
     }
   })
 
-  .state('app.resultLocation', {
-    url: '/resultLocation',
+  .state('app.season', {
+    url: '/season',
     views: {
       'menuContent': {
-        templateUrl: 'templates/resultLocation.html',
-        controller: 'ResultLocationCtrl'
+        templateUrl: 'templates/season.html',
+        controller: 'seasonCtrl'
       }
     }
   })
 
-  .state('app.aroundMe', {
-    url: '/aroundMe',
+  .state('app.result', {
+    url: '/result',
     views: {
       'menuContent': {
-        templateUrl: 'templates/aroundMe.html',
-        controller: 'AroundMeCtrl'
+        templateUrl: 'templates/result.html',
+        controller: 'resultCtrl'
       }
     }
   })
-
-  .state('app.search', {
-    url: '/search',
+  .state('app.view', {
+    url: '/views/{id}',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/information.html',
+        controller: 'infoCtrl'
       }
     }
   });

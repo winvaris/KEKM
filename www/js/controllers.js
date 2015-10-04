@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ionic-datepicker'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $state) {
 
@@ -142,24 +142,24 @@ angular.module('starter.controllers', [])
 
 .controller('homeCtrl', function($scope, $stateParams, $state) {
   $scope.first = function() {
-    $state.go("app.category");
+    $state.go("app.interest");
   };
   $scope.aroundMe = function() {
     $state.go("app.aroundMe");
   };
 })
 
+.controller('interestCtrl', function($scope, $stateParams, $state){
+    $scope.interests = ["Real Experience", "Enjoy & Eat", "Research & Labatory"];
+    $scope.goToSeason = function(int){
+      $state.go("app.season");
+    };
+})
+
 .controller('categoryCtrl', function($scope, $stateParams, $state) {
   $scope.categories = ["Industrial Crop", "Fruit & Vegetable", "Livestock", "Fishery"];
   $scope.goToSeason = function(cat){
-    $state.go("app.season");
-  };
-})
-
-.controller('InputCtrl', function($scope, $stateParams, $state) {
-  console.log("resultLocation");
-  $scope.result = function() {
-    $state.go("app.resultLocation");
+    $state.go("app.result");
   };
 })
 
@@ -168,14 +168,44 @@ angular.module('starter.controllers', [])
     $state.go("app.home");
   };
 })
-.controller('ResultLocationCtrl', function($scope, $stateParams, $state) {
+
+.controller('seasonCtrl', function($scope, $stateParams, $state){
+  $scope.selectedDate = new Date();
+  $scope.datepickerObject = {
+      titleLabel: 'Title',  //Optional
+      todayLabel: 'Today',  //Optional
+      closeLabel: 'Close',  //Optional
+      setLabel: 'Set',  //Optional
+      setButtonType : 'button-balanced',  //Optional
+      //todayButtonType : 'button-assertive',  //Optional
+      closeButtonType : 'button-assertive',  //Optional
+      // mondayFirst: true,    //Optional
+      templateType: 'popup', //Optional
+      showTodayButton: 'true', //Optional
+      callback: function (val) {    //Mandatory
+        datePickerCallback(val);
+      }
+    };
+    var datePickerCallback = function (val) {
+      if (typeof(val) === 'undefined') {
+        console.log('No date selected');
+      } else {
+        console.log('Selected date is : ', val);
+        $scope.selectedDate = val;
+      }
+    };
+    $scope.goToCat = function(){
+      $state.go("app.category");
+    };
 })
 
-.controller('AroundMeCtrl', function($scope, $stateParams, $state) {
+.controller('resultCtrl', function($scope, $stateParams, $state){
+  $scope.regions = ["Central", "North", "South", "East", "Northwest(E-san)", "West"];
+  $scope.information = function(id){
+    $state.go("app.info");
+  };
 })
 
-.controller('SigninCtrl', function($scope, $stateParams, $state) {
-})
+.controller('infoCtrl', function($scope, $stateParams, $state){
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+})
