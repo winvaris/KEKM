@@ -140,12 +140,19 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('HomeCtrl', function($scope, $stateParams, $state) {
-  $scope.input = function() {
-    $state.go("app.input");
+.controller('homeCtrl', function($scope, $stateParams, $state) {
+  $scope.first = function() {
+    $state.go("app.category");
   };
   $scope.aroundMe = function() {
     $state.go("app.aroundMe");
+  };
+})
+
+.controller('categoryCtrl', function($scope, $stateParams, $state) {
+  $scope.categories = ["Industrial Crop", "Fruit & Vegetable", "Livestock", "Fishery"];
+  $scope.goToSeason = function(cat){
+    $state.go("app.season");
   };
 })
 
@@ -156,6 +163,11 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('welcomeCtrl', function($scope, $stateParams, $state){
+  $scope.enter = function(){
+    $state.go("app.home");
+  };
+})
 .controller('ResultLocationCtrl', function($scope, $stateParams, $state) {
 })
 

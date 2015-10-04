@@ -25,33 +25,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-  .state('login', {
-    url: "/login",
+  .state('base', {
     abstract: true,
-    templateUrl: "templates/singlePage.html",
+    template: '<ion-nav-view />'
   })
 
-  .state('login.login', {
-    url: "/login",
-    views: {
-      'singlePage': {
-        templateUrl: "templates/login.html",
-        controller: 'LoginCtrl'
-      }
-    }
+  .state('base.home', {
+    url: '/',
+    templateUrl: 'templates/welcome.html',
+    controller: 'welcomeCtrl'
   })
 
-  .state('login.signin', {
-    url: '/signin',
-    views: {
-      'singlePage': {
-        templateUrl: 'templates/signin.html',
-        controller: 'SigninCtrl'
-      }
-    }
-  })
-
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
@@ -63,7 +48,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/home.html',
-        controller: 'HomeCtrl'
+        controller: 'homeCtrl'
+      }
+    }
+  })
+
+  .state('app.category', {
+    url: '/category',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/category.html',
+        controller: 'categoryCtrl'
       }
     }
   })
@@ -135,5 +130,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login/login');
+  $urlRouterProvider.otherwise('/');
 });
