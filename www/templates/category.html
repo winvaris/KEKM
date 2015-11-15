@@ -1,12 +1,24 @@
 <ion-view view-title="Category">
   <ion-content>
     <center>
-      <div align="center" style="padding-top: 4%; padding-left: 5%;
-    	padding-right: 5%;">
-        <h1>Select Product</h1>
-        <button class="button button-block button-stable" ng-repeat="cat in categories" ng-click="goToSeason(cat)">
-          {{cat}}
-        </button>
+      <div class="content">
+        <h1 class="app-header">Select Category</h1>
+        <div class="row">
+          <div class="col-xs-6">
+            <img class="category-btn" src="/img/industrial.jpg" ng-click="goToResult(industrial)">
+          </div>
+          <div class="col-xs-6">
+            <img class="category-btn" src="/img/fruit.jpg" ng-click="goToResult(fruit)">
+          </div>
+        </div>
+        <div class="row" style="margin-top: 1%;">
+          <div class="col-xs-6">
+            <img class="category-btn" src="/img/livestock.jpg" ng-click="goToResult(livestock)">
+          </div>
+          <div class="col-xs-6">
+            <img class="category-btn" src="/img/fishery.jpg" ng-click="goToResult(fishery)">
+          </div>
+        </div>
       </div>
     </center>
   </ion-content>

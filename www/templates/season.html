@@ -1,13 +1,96 @@
 <ion-view view-title="Date">
   <ion-content>
-    <center>
-      <div style="padding-top: 4%; padding-left: 5%; padding-right: 5%;">
-        <h1> Select Date </h1>
-        <ionic-datepicker input-obj="datepickerObject">
-          <button class="button button-block button-positive"> {{selectedDate | date:'dd - MMMM - yyyy'}}</button>
-        </ionic-datepicker>
-        <button class="button button-block button-stable" ng-click="goToCat()">Enter</button>
-      </div>
-    </center>
+    <div class="content">
+      <center>
+        <h1 class="app-header"> Select Date </h1>
+      </center>
+      <ul class="list">
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="checked[0]">
+              </label>
+              {{months[0]}}
+            </li>
+
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="checked[1]">
+              </label>
+              {{months[1]}}
+            </li>
+
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="checked[2]">
+              </label>
+              {{months[2]}}
+            </li>
+
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="checked[3]">
+              </label>
+              {{months[3]}}
+            </li>
+
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="checked[4]">
+              </label>
+              {{months[4]}}
+            </li>
+
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="checked[5]">
+              </label>
+              {{months[5]}}
+            </li>
+
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="checked[6]">
+              </label>
+              {{months[6]}}
+            </li>
+
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="checked[7]">
+              </label>
+              {{months[7]}}
+            </li>
+
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="checked[8]">
+              </label>
+              {{months[8]}}
+            </li>
+
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="checked[9]">
+              </label>
+              {{months[9]}}
+            </li>
+
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox"  ng-model="checked[10]">
+              </label>
+              {{months[10]}}
+            </li>
+
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox"  ng-model="checked[11]">
+              </label>
+              {{months[11]}}
+            </li>
+
+      </ul>
+      <button class="button button-block button-stable" ng-click="goToCat()">Enter</button>
+    </div>
   </ion-content>
 </ion-view>

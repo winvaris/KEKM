@@ -1,1 +1,25 @@
 /* Empty. Add your own CSS if you like */
+
+.background{
+  background-color: #4DBD33;
+}
+.app-header {
+  color: grey;
+}
+.interest-btn {
+  width: 100%;
+  height: auto;
+  cursor: hand;
+  cursor: pointer;
+}
+.category-btn {
+  width: 90%;
+  height: auto;
+  cursor: hand;
+  cursor: pointer;
+}
+.content {
+  margin-top: 5%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
