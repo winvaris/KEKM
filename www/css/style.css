@@ -4,13 +4,19 @@
     width: 80%;
     height: auto;
 }
-.background, .background .pane{
+/*.background, .background .pane{
   background-color: #1DA237;
-}
+}*/
 .app-header {
-  color: white;
+  color: grey;
 }
 
+#button {
+    background-color: #B1D849;
+    color: white;
+    border-color: #B1D849;
+    font-size: 20px;
+}
 .interest-btn {
   width: 100%;
   height: auto;

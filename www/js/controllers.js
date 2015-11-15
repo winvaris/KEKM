@@ -28,6 +28,12 @@ angular.module('starter.controllers', ['ionic-datepicker'])
 
 .controller('homeCtrl', function ($scope, $stateParams, $state, $http, $rootScope) {
 	// Control home page
+	$scope.viewAll = function(){
+		$rootScope.interest = "";
+		$rootScope.months = [];
+		$rootScope.type = "";
+		$rootScope.results = [];
+	};
 })
 
 .controller('interestCtrl', function ($scope, $stateParams, $state, $rootScope) {
