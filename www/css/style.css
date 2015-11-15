@@ -1,11 +1,16 @@
 /* Empty. Add your own CSS if you like */
 
-.background{
-  background-color: #4DBD33;
+#logo{
+    width: 80%;
+    height: auto;
+}
+.background, .background .pane{
+  background-color: #1DA237;
 }
 .app-header {
-  color: grey;
+  color: white;
 }
+
 .interest-btn {
   width: 100%;
   height: auto;

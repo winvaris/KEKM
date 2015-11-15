@@ -27,7 +27,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
   .state('base', {
     abstract: true,
-    template: '<ion-nav-view />'
+    template: '<ion-nav-view />',
+    cache: false
   })
 
   .state('base.home', {
@@ -40,7 +41,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    controller: 'AppCtrl',
+    cache: false
   })
 
   .state('app.home', {

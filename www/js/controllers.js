@@ -1,63 +1,44 @@
 angular.module('starter.controllers', ['ionic-datepicker'])
 
-.controller('AppCtrl', function ($scope, $ionicModal, $timeout, $state) {
+.controller('AppCtrl', function ($scope, $ionicModal, $timeout, $state, $rootScope) {
 
 	// With the new view caching in Ionic, Controllers are only called
 	// when they are recreated or on app start, instead of every page change.
 	// To listen for when this page is active (for example, to refresh data),
 	// listen for the $ionicView.enter event:
-	//$scope.$on('$ionicView.enter', function(e) {
-	//});
 
 	// Form data for the login modal
 	$scope.searchData = {};
 
-	$scope.result = function () {
-		$state.go("app.resultLocation");
-	};
-
-	// Triggered in the login modal to close it
-	$scope.closeSearch = function () {
-		$scope.modal.hide();
-	};
-
-	// Open the login modal
-	$scope.search = function () {
-		$scope.modal.show();
-	};
-
-	// Perform the login action when the user submits the login form
-	$scope.doSearch = function () {
-		console.log('Doing login', $scope.searchData);
-
-		// Simulate a login delay. Remove this and replace with your login
-		// code if using a login system
-		$timeout(function () {
-			$scope.closeSearch();
-		}, 1000);
-	};
-
-	$scope.starTest = function () {
-		console.log("TEST STAR");
-	};
 	$scope.toHome = function () {
 		$window.location.href = '/#/app/home';
 	};
 
+	$rootScope.interest = "";
+	$rootScope.months = [];
+	$rootScope.type = "";
+	$rootScope.results = [];
 })
 
-.controller('homeCtrl', function ($scope, $stateParams, $state, $http) {
+.controller('welcomeCtrl', function ($scope, $stateParams, $state) {
+	$scope.enter = function () {
+		$state.go("app.home");
+	};
+})
+
+.controller('homeCtrl', function ($scope, $stateParams, $state, $http, $rootScope) {
 	// Control home page
 })
 
-.controller('interestCtrl', function ($scope, $stateParams, $state) {
-	$scope.interests = ["Real Experience", "Enjoy & Eat", "Research & Labatory"];
-	$scope.goToSeason = function (int) {
+.controller('interestCtrl', function ($scope, $stateParams, $state, $rootScope) {
+	//$scope.interests = ["Real Experience", "Enjoy & Eat", "Research & Labatory"];
+	$scope.goToSeason = function (inter) {
+		$rootScope.interest = inter;
 		$state.go("app.season");
 	};
 })
 
-.controller('seasonCtrl', function ($scope, $stateParams, $state) {
+.controller('seasonCtrl', function ($scope, $stateParams, $state, $rootScope) {
 	var currentDate = new Date();
 	$scope.m = currentDate.getMonth();
 	$scope.months = ['January', 'February', 'March', 'April', 'May',
@@ -68,16 +49,21 @@ angular.module('starter.controllers', ['ionic-datepicker'])
 	for (var i = 0; i < 12; i++) {
 		$scope.checked[i] = false;
 	}
+
+	$scope.selectMonths = [];
 	$scope.goToCat = function () {
-		//val is date
-		var ok = false;
 		for (var i = 0; i < 12; i++) {
-			if (ok === true) {
-				break;
+			if ($scope.checked[i] === true) {
+				$scope.selectMonths.push(i + 1);
 			}
-			ok = $scope.checked[i];
 		}
-		if (ok === true) {
+		if ($scope.selectMonths.length > 0) {
+			for (var j = 0; j < $scope.selectMonths.length; j++) {
+				var obj = {
+					"name": $scope.selectMonths[j]
+				};
+				$rootScope.months.push(obj);
+			}
 			$state.go("app.category");
 		} else {
 			alert("Please select at least one month");
@@ -85,27 +71,86 @@ angular.module('starter.controllers', ['ionic-datepicker'])
 	};
 })
 
-.controller('categoryCtrl', function ($scope, $stateParams, $state) {
-	$scope.categories = ["Industrial Crop", "Fruit & Vegetable", "Livestock", "Fishery"];
-	$scope.goToResult = function (cat) {
+.controller('categoryCtrl', function ($scope, $stateParams, $state, $rootScope) {
+
+	//$scope.categories = ["Industrial Crop", "Fruit & Vegetable", "Livestock", "Fishery"];
+	$scope.goToResult = function (type) {
+		$rootScope.type = type;
+		console.log($rootScope.interest);
+		console.log($rootScope.type);
+		console.log($rootScope.months);
 		$state.go("app.result");
 	};
 })
 
-.controller('welcomeCtrl', function ($scope, $stateParams, $state) {
-	$scope.enter = function () {
-		$state.go("app.home");
+.controller('resultCtrl', function ($scope, $stateParams, $state, $ionicLoading, $http, $rootScope) {
+	$scope.show = function () {
+		$ionicLoading.show({
+			template: 'Loading...'
+		});
 	};
+	$scope.hide = function () {
+		$ionicLoading.hide();
+	};
+	$scope.regions = ["Central", "North", "South", "East", "Northeast", "West"];
+
+	$scope.request = function () {
+		if( $rootScope.interest === ""){
+			$scope.interest = [{name: "research"}, {name: "real"}, {name: "eat"}];
+		}
+		else{
+			$scope.interest = [{ name: $rootScope.interest }];
+		}
+
+		if( $rootScope.months.length === 0){
+			for( var i = 0; i < 12; i++){
+				var obj = {
+					name: i
+				};
+				$scope.months.push(obj);
+			}
+		}
+		else{
+			$scope.months = $rootScope.months;
+		}
+
+		if( $rootScope.type === ""){
+			$scope.type = [{name: "industry"}, {name: "fruit"}, {name: "fishery"}, {name: "fruit"}];
+		}
+		else{
+			$scope.type = [{ "name": $rootScope.type }];
+		}
+		var send = {
+				activities: $scope.interest,
+				month: $scope.months,
+				type: $scope.type
+		};
+
+		console.log(send);
+		$http.post('http://158.108.239.106:9998/api/query', send)
+			.success(function (data) {
+				$rootScope.results = data;
+				console.log($rootScope.results);
+				$scope.hide();
+			})
+			.error(function (data) {
+				console.log(data);
+			});
+	};
+	$scope.request();
+	$scope.show();
 })
 
-
-.controller('resultCtrl', function ($scope, $stateParams, $state) {
-	$scope.regions = ["Central", "North", "South", "East", "Northwest(E-san)", "West"];
-	$scope.information = function (id) {
-		$state.go("app.info");
+.controller('infoCtrl', function ($scope, $stateParams, $state, $rootScope) {
+	$scope.id = $stateParams.id;
+	$scope.getResult = function () {
+		for (var i = 0; i < $rootScope.results.length; i++) {
+			if ($rootScope.results[i].id === $scope.id) {
+				$scope.result = $rootScope.results[i];
+				break;
+			}
+		}
 	};
-})
-
-.controller('infoCtrl', function ($scope, $stateParams, $state) {
+	$scope.getResult();
 
 });

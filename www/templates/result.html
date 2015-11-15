@@ -1,20 +1,18 @@
 <ion-view view-title="Location">
   <ion-content>
     <div class="content">
-        <h5 style="padding-left: 20px;">Enjoy & Eat << Fruit & Vegetable </h5>
-      <div>
-        <h2 align="center">Select Location</h2>
-      </div>
+      <h2 align="center" class="app-header">Select Location</h2>
+      <br>
       <div>
         <div ng-repeat="reg in regions">
           <div class="item item-divider">
             <h2>{{reg}} Region</h2>
           </div>
-          <div class="card" ng-repeat=" i in [1,2,3]">
-            <div class="item item-avatar" ui-sref="app.view({id: 1})">
-              <img src="/img/ionic.png">
-              <h2>Rice Field</h2>
-              <p>Suphanburi Province</p>
+          <div class="card" ng-repeat=" result in results" ng-show="result.region === reg">
+            <div class="item item-avatar" ui-sref="app.view({id: result.id})">
+                <img src="{{result.imgUrl}}">
+              <h2>{{result.name}}</h2>
+              <p>{{result.province}} Province</p>
             </div>
           </div>
         </div>
